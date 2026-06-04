@@ -57,6 +57,7 @@ jobs:
               git clone https://github.com/muhammadarf5555-collab/UAS_2388010017.git "$HOME/UAS_2388010017"
               cd "$HOME/UAS_2388010017"
             fi
+            git remote set-url origin https://github.com/muhammadarf5555-collab/UAS_2388010017.git
             git fetch --all
             git reset --hard origin/main
             if [ ! -f .env ]; then
