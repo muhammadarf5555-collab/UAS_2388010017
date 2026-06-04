@@ -477,6 +477,164 @@ function delete_dummy_ranking($id) {
 }
 
 // --------------------------------------------------------
+// BUSINESS LOGIC HELPERS: UPDATE / EDIT
+// --------------------------------------------------------
+
+function get_article_by_id($id) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            $stmt = $conn->prepare("SELECT * FROM artikel WHERE id = :id");
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_articles'] ?? [] as $a) {
+        if ((int)$a['id'] === (int)$id) return $a;
+    }
+    return null;
+}
+
+function update_article($id, $judul, $kategori, $isi, $gambar = null) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            if ($gambar) {
+                $stmt = $conn->prepare("UPDATE artikel SET judul=:judul, kategori=:kategori, isi=:isi, gambar_fitur=:gambar WHERE id=:id");
+                return $stmt->execute(['judul'=>$judul,'kategori'=>$kategori,'isi'=>$isi,'gambar'=>$gambar,'id'=>$id]);
+            } else {
+                $stmt = $conn->prepare("UPDATE artikel SET judul=:judul, kategori=:kategori, isi=:isi WHERE id=:id");
+                return $stmt->execute(['judul'=>$judul,'kategori'=>$kategori,'isi'=>$isi,'id'=>$id]);
+            }
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_articles'] ?? [] as &$a) {
+        if ((int)$a['id'] === (int)$id) {
+            $a['judul'] = $judul; $a['kategori'] = $kategori; $a['isi'] = $isi;
+            if ($gambar) $a['gambar_fitur'] = $gambar;
+            return true;
+        }
+    }
+    return true;
+}
+
+function get_project_by_id($id) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            $stmt = $conn->prepare("SELECT * FROM proyek_it WHERE id = :id");
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_projects'] ?? [] as $p) {
+        if ((int)$p['id'] === (int)$id) return $p;
+    }
+    return null;
+}
+
+function update_project($id, $judul, $deskripsi, $tech, $gambar = null) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            if ($gambar) {
+                $stmt = $conn->prepare("UPDATE proyek_it SET judul_proyek=:judul, deskripsi=:deskripsi, tech_stack=:tech, gambar_proyek=:gambar WHERE id=:id");
+                return $stmt->execute(['judul'=>$judul,'deskripsi'=>$deskripsi,'tech'=>$tech,'gambar'=>$gambar,'id'=>$id]);
+            } else {
+                $stmt = $conn->prepare("UPDATE proyek_it SET judul_proyek=:judul, deskripsi=:deskripsi, tech_stack=:tech WHERE id=:id");
+                return $stmt->execute(['judul'=>$judul,'deskripsi'=>$deskripsi,'tech'=>$tech,'id'=>$id]);
+            }
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_projects'] ?? [] as &$p) {
+        if ((int)$p['id'] === (int)$id) {
+            $p['judul_proyek'] = $judul; $p['deskripsi'] = $deskripsi; $p['tech_stack'] = $tech;
+            if ($gambar) $p['gambar_proyek'] = $gambar;
+            return true;
+        }
+    }
+    return true;
+}
+
+function get_certificate_by_id($id) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            $stmt = $conn->prepare("SELECT * FROM sertifikat WHERE id = :id");
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_certs'] ?? [] as $c) {
+        if ((int)$c['id'] === (int)$id) return $c;
+    }
+    return null;
+}
+
+function update_certificate($id, $nama, $penerbit, $gambar = null) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            if ($gambar) {
+                $stmt = $conn->prepare("UPDATE sertifikat SET nama_sertifikat=:nama, penerbit=:penerbit, gambar_sertifikat=:gambar WHERE id=:id");
+                return $stmt->execute(['nama'=>$nama,'penerbit'=>$penerbit,'gambar'=>$gambar,'id'=>$id]);
+            } else {
+                $stmt = $conn->prepare("UPDATE sertifikat SET nama_sertifikat=:nama, penerbit=:penerbit WHERE id=:id");
+                return $stmt->execute(['nama'=>$nama,'penerbit'=>$penerbit,'id'=>$id]);
+            }
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_certs'] ?? [] as &$c) {
+        if ((int)$c['id'] === (int)$id) {
+            $c['nama_sertifikat'] = $nama; $c['penerbit'] = $penerbit;
+            if ($gambar) $c['gambar_sertifikat'] = $gambar;
+            return true;
+        }
+    }
+    return true;
+}
+
+function get_ranking_by_id($id) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            $stmt = $conn->prepare("SELECT * FROM peringkat_anime WHERE id = :id");
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_rankings'] ?? [] as $r) {
+        if ((int)$r['id'] === (int)$id) return $r;
+    }
+    return null;
+}
+
+function update_ranking($id, $judul, $genre, $skor, $rank, $sinopsis, $gambar = null) {
+    global $conn, $is_db_connected;
+    if ($is_db_connected) {
+        try {
+            if ($gambar) {
+                $stmt = $conn->prepare("UPDATE peringkat_anime SET judul_anime=:judul, genre=:genre, skor_rating=:skor, posisi_rank=:rank, sinopsis=:sinopsis, gambar_anime=:gambar WHERE id=:id");
+                return $stmt->execute(['judul'=>$judul,'genre'=>$genre,'skor'=>$skor,'rank'=>$rank,'sinopsis'=>$sinopsis,'gambar'=>$gambar,'id'=>$id]);
+            } else {
+                $stmt = $conn->prepare("UPDATE peringkat_anime SET judul_anime=:judul, genre=:genre, skor_rating=:skor, posisi_rank=:rank, sinopsis=:sinopsis WHERE id=:id");
+                return $stmt->execute(['judul'=>$judul,'genre'=>$genre,'skor'=>$skor,'rank'=>$rank,'sinopsis'=>$sinopsis,'id'=>$id]);
+            }
+        } catch (PDOException $e) {}
+    }
+    foreach ($_SESSION['dummy_rankings'] ?? [] as &$r) {
+        if ((int)$r['id'] === (int)$id) {
+            $r['judul_anime'] = $judul; $r['genre'] = $genre;
+            $r['skor_rating'] = (float)$skor; $r['posisi_rank'] = (int)$rank;
+            $r['sinopsis'] = $sinopsis;
+            if ($gambar) $r['gambar_anime'] = $gambar;
+            return true;
+        }
+    }
+    return true;
+}
+
+// --------------------------------------------------------
 // BUSINESS LOGIC HELPERS: ADMIN AUTH & GENERAL
 // --------------------------------------------------------
 

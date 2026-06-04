@@ -70,8 +70,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'delete') {
 }
 
 // Set success message dari query string status
-if (isset($_GET['status']) && $_GET['status'] === 'deleted') {
-    $success_msg = 'Data berhasil dihapus!';
+if (isset($_GET['status'])) {
+    if ($_GET['status'] === 'deleted') $success_msg = 'Data berhasil dihapus!';
+    if ($_GET['status'] === 'updated') $success_msg = 'Data berhasil diperbarui!';
+    if ($_GET['status'] === 'added')   $success_msg = 'Data baru berhasil ditambahkan!';
 }
 
 // ===================== PROSES TAMBAH DATA =====================
@@ -185,9 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-if (isset($_GET['status']) && $_GET['status'] === 'added') {
-    $success_msg = 'Data baru berhasil ditambahkan!';
-}
+// (Status messages now handled above)
 
 // Fetch semua data untuk tabel
 $articles    = get_all_articles();
@@ -320,9 +320,10 @@ include_once '../includes/header.php';
                                     <td><strong class="text-white"><?php echo htmlspecialchars($a['judul']); ?></strong></td>
                                     <td><span class="<?php echo (strcasecmp($a['kategori'],'Informatika')===0)?'badge-it':'badge-anime'; ?>" style="font-size:.68rem;padding:.2rem .5rem;"><?php echo htmlspecialchars($a['kategori']); ?></span></td>
                                     <td class="small"><?php echo date('d-m-Y', strtotime($a['tanggal'])); ?></td>
-                                    <td class="text-center">
-                                        <a href="kelola.php?action=delete&type=artikel&id=<?php echo $a['id']; ?>&tab=artikel" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus artikel ini?')"><i class="fa-regular fa-trash-can"></i></a>
-                                    </td>
+                                     <td class="text-center" style="white-space:nowrap;">
+                                         <a href="edit.php?type=artikel&id=<?php echo $a['id']; ?>" class="btn btn-sm px-2 py-1 me-1" style="background:rgba(108,99,255,.1);color:var(--primary);border-radius:8px;"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="kelola.php?action=delete&type=artikel&id=<?php echo $a['id']; ?>&tab=artikel" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus artikel ini?')"><i class="fa-regular fa-trash-can"></i></a>
+                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -377,9 +378,10 @@ include_once '../includes/header.php';
                                     <td><?php echo $no++; ?></td>
                                     <td><strong class="text-white"><?php echo htmlspecialchars($p['judul_proyek']); ?></strong></td>
                                     <td class="small text-muted"><?php echo htmlspecialchars($p['tech_stack']); ?></td>
-                                    <td class="text-center">
-                                        <a href="kelola.php?action=delete&type=proyek&id=<?php echo $p['id']; ?>&tab=proyek" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus proyek ini?')"><i class="fa-regular fa-trash-can"></i></a>
-                                    </td>
+                                     <td class="text-center" style="white-space:nowrap;">
+                                         <a href="edit.php?type=proyek&id=<?php echo $p['id']; ?>" class="btn btn-sm px-2 py-1 me-1" style="background:rgba(67,233,123,.1);color:#43E97B;border-radius:8px;"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="kelola.php?action=delete&type=proyek&id=<?php echo $p['id']; ?>&tab=proyek" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus proyek ini?')"><i class="fa-regular fa-trash-can"></i></a>
+                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -430,9 +432,10 @@ include_once '../includes/header.php';
                                     <td><?php echo $no++; ?></td>
                                     <td><strong class="text-white"><?php echo htmlspecialchars($c['nama_sertifikat']); ?></strong></td>
                                     <td class="small text-muted"><?php echo htmlspecialchars($c['penerbit']); ?></td>
-                                    <td class="text-center">
-                                        <a href="kelola.php?action=delete&type=sertifikat&id=<?php echo $c['id']; ?>&tab=sertifikat" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus sertifikat ini?')"><i class="fa-regular fa-trash-can"></i></a>
-                                    </td>
+                                     <td class="text-center" style="white-space:nowrap;">
+                                         <a href="edit.php?type=sertifikat&id=<?php echo $c['id']; ?>" class="btn btn-sm px-2 py-1 me-1" style="background:rgba(255,193,7,.1);color:#ffc107;border-radius:8px;"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="kelola.php?action=delete&type=sertifikat&id=<?php echo $c['id']; ?>&tab=sertifikat" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus sertifikat ini?')"><i class="fa-regular fa-trash-can"></i></a>
+                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -498,9 +501,10 @@ include_once '../includes/header.php';
                                     <td><strong class="text-white"><?php echo htmlspecialchars($r['judul_anime']); ?></strong></td>
                                     <td><span class="text-warning fw-bold"><?php echo number_format((float)$r['skor_rating'],2); ?></span></td>
                                     <td class="small text-muted"><?php echo htmlspecialchars($r['genre']); ?></td>
-                                    <td class="text-center">
-                                        <a href="kelola.php?action=delete&type=ranking&id=<?php echo $r['id']; ?>&tab=ranking" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus data peringkat ini?')"><i class="fa-regular fa-trash-can"></i></a>
-                                    </td>
+                                     <td class="text-center" style="white-space:nowrap;">
+                                         <a href="edit.php?type=ranking&id=<?php echo $r['id']; ?>" class="btn btn-sm px-2 py-1 me-1" style="background:rgba(255,101,132,.1);color:#FF6584;border-radius:8px;"><i class="fa-solid fa-pen-to-square"></i></a>
+                                         <a href="kelola.php?action=delete&type=ranking&id=<?php echo $r['id']; ?>&tab=ranking" class="btn btn-sm px-2 py-1" style="background:rgba(220,38,38,.08);color:#ef4444;border-radius:8px;" onclick="return confirm('Hapus data peringkat ini?')"><i class="fa-regular fa-trash-can"></i></a>
+                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
