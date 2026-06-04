@@ -51,6 +51,8 @@ services:
     restart: always
     ports:
       - "80:80"
+    volumes:
+      - ./webStatis:/usr/share/nginx/html
     networks:
       - technime_net
 
