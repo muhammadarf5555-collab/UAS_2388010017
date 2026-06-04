@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - MUHAMMAD ARIF RIZKY</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #43E97B;
+            --dark: #0D0D1A;
+            --card: #13132B;
+            --card2: #1A1A35;
+            --text: #E8E8F0;
+            --muted: #8888AA;
+            --border: rgba(108, 99, 255, 0.18);
+            --glow: 0 0 40px rgba(108, 99, 255, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 5%;
+            background: rgba(13, 13, 26, 0.75);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle span {
+            width: 20px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.35;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -100px;
+            left: -80px;
+            animation-delay: -3s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            top: 50%;
+            right: 30%;
+            animation-delay: -5s;
+            opacity: 0.15;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(108, 99, 255, 0.12);
+            border: 1px solid rgba(108, 99, 255, 0.3);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 500px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--primary), #8B85FF);
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.35);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(108, 99, 255, 0.5);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.85rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, background 0.2s;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.08);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .photo-frame {
+            width: 320px;
+            height: 380px;
+            border-radius: 28px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: var(--glow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .photo-frame.has-image img {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: var(--muted);
+            background: linear-gradient(135deg, var(--card), var(--card2));
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .photo-frame.has-image .photo-placeholder {
+            display: none;
+        }
+
+        .photo-placeholder i {
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        .photo-placeholder span {
+            font-size: 0.85rem;
+        }
+
+        .stat-chip {
+            position: absolute;
+            background: rgba(13, 13, 26, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .stat-chip.left {
+            left: -60px;
+            bottom: 60px;
+        }
+
+        .stat-chip.top-r {
+            right: -40px;
+            top: 60px;
+        }
+
+        .stat-chip span {
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: block;
+        }
+
+        section {
+            padding: 6rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(108, 99, 255, 0.12);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .info-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 0.1rem;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .upload-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(255, 101, 132, 0.05));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.3rem;
+            overflow: hidden;
+        }
+
+        .upload-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.03));
+            pointer-events: none;
+        }
+
+        .upload-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(108, 99, 255, 0.14);
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .upload-card-title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .upload-card-desc {
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .upload-card input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .upload-card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.72rem 1rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(108, 99, 255, 0.35);
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .upload-file-name {
+            margin-top: 0.9rem;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-height: 1rem;
+            word-break: break-word;
+        }
+
+        .profile-upload-note {
+            margin-top: 0.9rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .skills-section {
+            background: rgba(255, 255, 255, 0.015);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(108, 99, 255, 0.15);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .skill-pct {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .skill-bar {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(108, 99, 255, 0.1);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            color: var(--primary);
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.45rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(108, 99, 255, 0.6);
+        }
+
+        .timeline-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(6px);
+            box-shadow: var(--glow);
+        }
+
+        .timeline-period {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-sub {
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .certificates-layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .certificate-upload-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 1.4rem;
+            position: sticky;
+            top: 100px;
+        }
+
+        .certificate-dropzone {
+            position: relative;
+            min-height: 250px;
+            border: 1px dashed rgba(108, 99, 255, 0.35);
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), rgba(255, 101, 132, 0.05));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .certificate-dropzone input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .certificate-dropzone i {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .certificate-dropzone strong {
+            font-size: 1rem;
+        }
+
+        .certificate-dropzone p {
+            color: var(--muted);
+            margin-top: 0.55rem;
+            line-height: 1.6;
+            font-size: 0.85rem;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 1rem;
+        }
+
+        .certificate-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(108, 99, 255, 0.16);
+        }
+
+        .certificate-preview {
+            height: 160px;
+            background: linear-gradient(135deg, var(--card2), var(--dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .certificate-preview img,
+        .certificate-preview canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .certificate-preview.loading {
+            flex-direction: column;
+            gap: 0.6rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .certificate-preview .cert-icon {
+            font-size: 2.6rem;
+            color: var(--primary);
+            opacity: 0.9;
+        }
+
+        .certificate-body {
+            padding: 1rem;
+        }
+
+        .certificate-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            word-break: break-word;
+            margin-bottom: 0.35rem;
+        }
+
+        .certificate-meta {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .certificate-empty {
+            min-height: 100%;
+            background: var(--card);
+            border: 1px dashed rgba(108, 99, 255, 0.25);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .certificate-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 8, 20, 0.82);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .certificate-modal.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .certificate-modal-content {
+            width: min(1100px, 100%);
+            height: min(88vh, 900px);
+            background: linear-gradient(135deg, var(--card), var(--card2));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certificate-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .certificate-modal-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .certificate-modal-close {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .certificate-modal-body {
+            flex: 1;
+            background: #0b0d1d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .certificate-modal-body.pdf-mode {
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        .certificate-modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .certificate-modal-fallback {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+        }
+
+        .certificate-pdf-viewer {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            background: #0b0d1d;
+        }
+
+        .certificate-pdf-page {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .certificate-pdf-page canvas {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .certificate-modal-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            color: var(--text);
+            min-height: 240px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .certificate-modal-loading i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(108, 99, 255, 0.2);
+        }
+
+        .project-thumb {
+            height: 160px;
+            background: linear-gradient(135deg, var(--card2), var(--dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 101, 132, 0.1));
+        }
+
+        .project-body {
+            padding: 1.4rem;
+        }
+
+        .project-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tech-badge {
+            background: rgba(67, 233, 123, 0.08);
+            border: 1px solid rgba(67, 233, 123, 0.2);
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.015);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.9rem;
+            min-height: 180px;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 1.5rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(255, 101, 132, 0.04));
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(108, 99, 255, 0.35);
+            box-shadow: 0 22px 50px rgba(108, 99, 255, 0.16);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .contact-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .contact-wa .contact-icon-wrap {
+            color: #25D366;
+            background: rgba(37, 211, 102, 0.08);
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .contact-ig .contact-icon-wrap {
+            color: #E4405F;
+            background: rgba(228, 64, 95, 0.08);
+            border-color: rgba(228, 64, 95, 0.2);
+        }
+
+        .contact-linkedin .contact-icon-wrap {
+            color: #0A66C2;
+            background: rgba(10, 102, 194, 0.08);
+            border-color: rgba(10, 102, 194, 0.2);
+        }
+
+        .contact-tiktok .contact-icon-wrap {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-deploy {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-deploy span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0 5%;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width: 1100px) {
+            .hero {
+                padding-top: 110px;
+                padding-bottom: 60px;
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+            }
+
+            .stat-chip.left,
+            .stat-chip.top-r {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .about-grid,
+            .certificates-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-upload-box {
+                position: static;
+            }
+
+            .menu-toggle {
+                display: flex;
+                z-index: 120;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: calc(100% + 12px);
+                right: 5%;
+                left: 5%;
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+                padding: 0.8rem;
+                background: rgba(13, 13, 26, 0.96);
+                backdrop-filter: blur(18px);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.open {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 0.95rem 1rem;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.02);
+            }
+
+            .nav-links a:hover {
+                background: rgba(108, 99, 255, 0.08);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .photo-frame {
+                width: min(86vw, 320px);
+                height: 380px;
+            }
+
+            .mini-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4.5rem 5%;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .certificate-modal {
+                padding: 1rem;
+            }
+
+            .certificate-modal-content {
+                height: min(90vh, 100%);
+                border-radius: 18px;
+            }
+
+            .certificate-modal-title {
+                font-size: 0.85rem;
+            }
+
+            .contact-card {
+                min-height: 150px;
+            }
+
+            .certificate-pdf-viewer {
+                padding: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">MUHAMMAD ARIF RIZKY</div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#education">Pendidikan</a></li>
+            <li><a href="#certificates">Sertifikat</a></li>
+            <li><a href="#projects">Proyek</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">PROGRAMMER PEMULA</div>
+            <h1>
+                Halo, Saya<br>
+                <span>MUHAMMAD ARIF RIZKY</span>
+            </h1>
+            <p class="hero-subtitle">
+                Mahasiswa Informatika yang passionate di bidang pengembangan web dan teknologi. Mengubah ide menjadi
+                solusi digital yang berdampak.
+            </p>
+            <div class="hero-cta">
+                <a href="#about" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i> Tentang Saya
+                </a>
+                <a href="#projects" class="btn-outline">
+                    <i class="fas fa-code"></i> Lihat Proyek
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="photo-frame has-image">
+                <img src="arif.jpeg" alt="Foto Muhammad Arif Rizky">
+            </div>
+        </div>
+        </div>
+        <div class="stat-chip left">
+            <span>3.0+</span> IPK
+        </div>
+        <div class="stat-chip top-r">
+            <span>2</span> Proyek
+        </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="about">
+        <div class="reveal">
+            <span class="section-label">Tentang Saya</span>
+            <h2 class="section-title">Kenali Saya Lebih Dekat</h2>
+            <p class="section-desc">Informasi lengkap tentang diri saya, latar belakang, dan bagaimana cara menghubungi
+                saya.</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="info-card reveal">
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-user"></i></div>
+                    <div>
+                        <div class="info-label">Nama Lengkap</div>
+                        <div class="info-value">Muhammad Arif Rizky</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-user"></i></div>
+                    <div>
+                        <div class="info-label">NO HP</div>
+                        <div class="info-value">085172033209</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-id-card"></i></div>
+                    <div>
+                        <div class="info-label">NIM</div>
+                        <div class="info-value">2388010017</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-calendar"></i></div>
+                    <div>
+                        <div class="info-label">Tanggal Lahir</div>
+                        <div class="info-value">25-02-2005</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <div class="info-label">Asal Daerah</div>
+                        <div class="info-value">SUBANG, JAWA BARAT</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="info-label">Email</div>
+                        <div class="info-value">muhammadarf5555@gmail.com</div>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <div class="info-label">Program Studi</div>
+                        <div class="info-value">Teknik Informatika</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal" style="display:flex;flex-direction:column;gap:1.2rem;">
+                <div class="info-card">
+                    <p style="color:var(--muted);line-height:1.8;font-size:0.95rem;">
+                        Saya adalah mahasiswa <strong style="color:var(--text)">Teknik Informatika</strong> yang
+                        antusias
+                        dalam dunia pengembangan web dan teknologi modern. Saya percaya bahwa teknologi adalah alat
+                        terbaik untuk memecahkan masalah nyata di masyarakat.
+                    </p>
+                    <p style="color:var(--muted);line-height:1.8;font-size:0.95rem;margin-top:1rem;">
+                        Dengan semangat belajar yang tinggi, saya terus mengembangkan diri di bidang
+                        <strong style="color:var(--primary)">frontend development</strong>,
+                        <strong style="color:var(--secondary)">backend systems</strong>
+                    </p>
+                </div>
+
+                <div class="mini-grid">
+                    <div class="info-card" style="text-align:center;padding:1.5rem 1rem;">
+                        <div
+                            style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                            3.0+
+                        </div>
+                        <div style="color:var(--muted);font-size:0.8rem;margin-top:0.3rem;">IPK Saat Ini</div>
+                    </div>
+                    <div class="info-card" style="text-align:center;padding:1.5rem 1rem;">
+                        <div
+                            style="font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                            1
+                        </div>
+                        <div style="color:var(--muted);font-size:0.8rem;margin-top:0.3rem;">Proyek Selesai</div>
+                    </div>
+                </div>
+
+                <div class="mini-grid">
+
+                    <a href="#certificates" class="upload-card"
+                        style="text-decoration:none;color:inherit;display:block;">
+                        <div class="upload-card-header">
+                            <div class="upload-card-icon"><i class="fas fa-award"></i></div>
+                            <div>
+                                <div class="upload-card-title">Card Sertifikat</div>
+                                <div class="info-label">Galeri pencapaian</div>
+                            </div>
+                        </div>
+                        <p class="upload-card-desc">Tempat upload sertifikat dibuat terpisah sebagai showcase card agar
+                            portofolio tetap elegan dan terasa lebih inovatif.</p>
+                        <div class="upload-card-action"><i class="fas fa-arrow-down"></i> Buka Area Sertifikat</div>
+                        <div class="upload-file-name">Bisa upload banyak file</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="skills" class="skills-section">
+        <div class="reveal">
+            <span class="section-label">Keahlian</span>
+            <h2 class="section-title">Tech Stack & Skills</h2>
+            <p class="section-desc">Teknologi dan alat yang saya kuasai dalam pengembangan proyek.</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-header">
+                    <span class="skill-name">💻 Frontend</span>
+                    <span class="skill-pct">65%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:85%"></div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-header">
+                    <span class="skill-name">⚙️ Backend</span>
+                    <span class="skill-pct">75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:75%"></div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-header">
+                    <span class="skill-name">🛠️ DevOps & Tools</span>
+                    <span class="skill-pct">70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:70%"></div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Nginx</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">SSH</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal">
+                <div class="skill-header">
+                    <span class="skill-name">🎨 UI/UX Design</span>
+                    <span class="skill-pct">65%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width:65%"></div>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Canva</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="education">
+        <div class="reveal">
+            <span class="section-label">Riwayat Pendidikan</span>
+            <h2 class="section-title">Perjalanan Akademik</h2>
+            <p class="section-desc">Jenjang pendidikan yang telah saya tempuh hingga saat ini.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-period">2022 — Sekarang</div>
+                    <div class="timeline-title">S1 Teknik Informatika</div>
+                    <div class="timeline-sub">UIN Siber Syekh Nurjati Cirebon · IPK: 3.0/4.0</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-period">2019 — 2022</div>
+                    <div class="timeline-title">SMA Negeri 1 Ciasem</div>
+                    <div class="timeline-sub">Subang</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-period">2016 — 2019</div>
+                    <div class="timeline-title">SMP Negeri 1 Ciasem</div>
+                    <div class="timeline-sub">Subang</div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-period">2010 — 2016</div>
+                    <div class="timeline-title">SD Negeri 2 Sukamandi</div>
+                    <div class="timeline-sub">Subang</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="certificates">
+        <div class="reveal">
+            <span class="section-label">Sertifikat</span>
+            <h2 class="section-title">Galeri Sertifikat Interaktif</h2>
+            <p class="section-desc">Upload sertifikat sendiri secara manual. File akan tampil dalam card yang tetap
+                serasi dengan desain web portofolio kamu.</p>
+        </div>
+
+        <div class="certificates-layout">
+            <div class="certificate-upload-box reveal">
+                <label class="certificate-dropzone">
+                    <input type="file" id="certificateUpload" accept=".pdf,.png,.jpg,.jpeg,.webp" multiple>
+                    <i class="fas fa-file-arrow-up"></i>
+                    <strong>Upload Sertifikat</strong>
+                    <p>Pilih satu atau beberapa file. Gambar akan tampil sebagai preview, PDF akan tampil sebagai
+                        preview halaman pertama.</p>
+                </label>
+            </div>
+
+            <div class="certificate-grid reveal" id="certificateGrid">
+                <div class="certificate-empty" id="certificateEmpty">
+                    Sertifikat yang kamu upload akan muncul di sini dalam bentuk card portofolio yang rapi dan cocok
+                    untuk desktop maupun HP.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="projects">
+        <div class="reveal">
+            <span class="section-label">Portofolio</span>
+            <h2 class="section-title">Proyek Unggulan</h2>
+            <p class="section-desc">Beberapa proyek terbaik yang pernah saya kerjakan.</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-thumb">🌐</div>
+                <div class="project-body">
+                    <div class="project-title">Website Portofolio Pribadi</div>
+                    <div class="project-desc">Web CV interaktif dengan desain modern, responsive, dan dideploy
+                        menggunakan Nginx di server Linux.</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Nginx</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-thumb">🌐</div>
+                <div class="project-body">
+                    <div class="project-title">Sistem booking kelas Lab Informatika Gedung Siber</div>
+                    <div class="project-desc">Aplikasi web untuk membooking kelas yang ada di UIN SIBER SYEKH NURJATI
+                        CIREBON</div>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="contact" class="contact-section">
+        <div class="reveal">
+            <span class="section-label">Kontak</span>
+            <h2 class="section-title">Temukan Saya di Sosial Media</h2>
+            <p class="section-desc">
+                Klik ikon di bawah untuk langsung membuka WhatsApp, Instagram, LinkedIn, atau TikTok saya.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            <a href="https://wa.me/6285172033209" target="_blank" rel="noopener noreferrer"
+                class="contact-card contact-wa reveal">
+                <div class="contact-icon-wrap">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>085172033209</p>
+            </a>
+
+            <a href="https://www.instagram.com/muhammadarif_rizky_v/" target="_blank" rel="noopener noreferrer"
+                class="contact-card contact-ig reveal">
+                <div class="contact-icon-wrap">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>@muhammadarif_rizky_v</p>
+            </a>
+
+            <a href="https://www.linkedin.com/in/muhammad-arif-rizky-8207813b8/" target="_blank"
+                rel="noopener noreferrer" class="contact-card contact-linkedin reveal">
+                <div class="contact-icon-wrap">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <h3>LinkedIn</h3>
+                <p>muhammad-arif-rizky-8207813b8</p>
+            </a>
+
+            <a href="https://www.tiktok.com/@arifrizkypoh" target="_blank" rel="noopener noreferrer"
+                class="contact-card contact-tiktok reveal">
+                <div class="contact-icon-wrap">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <h3>TikTok</h3>
+                <p>@arifrizkypoh</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">MUHAMMAD ARIF RIZKY.dev</div>
+        <div class="footer-deploy">
+            Dideploy oleh: <span>MUHAMMAD ARIF RIZKY - 2388010017</span>
+        </div>
+        <div style="color:var(--muted);font-size:0.8rem;">© 2025 · Dibuat dengan ❤️</div>
+    </footer>
+
+    <div class="certificate-modal" id="certificateModal">
+        <div class="certificate-modal-content">
+            <div class="certificate-modal-header">
+                <div class="certificate-modal-title" id="certificateModalTitle">Preview Sertifikat</div>
+                <button class="certificate-modal-close" id="certificateModalClose" aria-label="Tutup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="certificate-modal-body" id="certificateModalBody"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+
+        const skillFills = document.querySelectorAll('.skill-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target;
+                    const target = fill.style.width;
+                    fill.style.width = '0%';
+                    setTimeout(() => fill.style.width = target, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+        skillFills.forEach(el => skillObserver.observe(el));
+
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 140) current = sec.getAttribute('id');
+            });
+            navLinks.forEach(a => {
+                a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--primary)' : '';
+            });
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function () {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('open');
+            });
+
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function () {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('open');
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                const isClickInsideMenu = navMenu.contains(e.target);
+                const isClickToggle = menuToggle.contains(e.target);
+
+                if (!isClickInsideMenu && !isClickToggle) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('open');
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 900) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('open');
+                }
+            });
+        }
+
+
+        const certificateUpload = document.getElementById('certificateUpload');
+        const certificateGrid = document.getElementById('certificateGrid');
+        const certificateEmpty = document.getElementById('certificateEmpty');
+
+        const certificateModal = document.getElementById('certificateModal');
+        const certificateModalBody = document.getElementById('certificateModalBody');
+        const certificateModalTitle = document.getElementById('certificateModalTitle');
+        const certificateModalClose = document.getElementById('certificateModalClose');
+
+        let activeCertificateUrl = null;
+
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+        }
+
+        function formatFileSize(size) {
+            if (size < 1024) return size + ' B';
+            if (size < 1024 * 1024) return (size / 1024).toFixed(1) + ' KB';
+            return (size / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function getPdfRenderSizes(page, maxDisplayWidth) {
+            const baseViewport = page.getViewport({ scale: 1 });
+
+            const safeWidth = Math.max(220, maxDisplayWidth);
+            const displayScale = safeWidth / baseViewport.width;
+
+            const dpr = Math.max(window.devicePixelRatio || 1, 2);
+            const renderScale = Math.max(displayScale * dpr, 2.2);
+
+            const renderViewport = page.getViewport({ scale: renderScale });
+
+            return {
+                baseViewport,
+                renderViewport,
+                cssWidth: Math.round(baseViewport.width * displayScale),
+                cssHeight: Math.round(baseViewport.height * displayScale)
+            };
+        }
+
+        async function renderPdfPreview(file, previewElement) {
+            previewElement.classList.add('loading');
+            previewElement.innerHTML = `
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Memuat preview...</span>
+            `;
+
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                const page = await pdf.getPage(1);
+
+                const sizes = getPdfRenderSizes(page, 260);
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d', { alpha: false });
+
+                canvas.width = Math.floor(sizes.renderViewport.width);
+                canvas.height = Math.floor(sizes.renderViewport.height);
+
+                await page.render({
+                    canvasContext: context,
+                    viewport: sizes.renderViewport
+                }).promise;
+
+                const img = document.createElement('img');
+                img.src = canvas.toDataURL('image/png');
+                img.alt = file.name;
+
+                previewElement.classList.remove('loading');
+                previewElement.innerHTML = '';
+                previewElement.appendChild(img);
+            } catch (error) {
+                previewElement.classList.remove('loading');
+                previewElement.innerHTML = `
+                    <div class="cert-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                `;
+                console.error('Gagal render preview PDF:', error);
+            }
+        }
+
+        function closeCertificateViewer() {
+            certificateModal.classList.remove('active');
+            certificateModalBody.innerHTML = '';
+            certificateModalBody.classList.remove('pdf-mode');
+            document.body.style.overflow = '';
+
+            if (activeCertificateUrl) {
+                URL.revokeObjectURL(activeCertificateUrl);
+                activeCertificateUrl = null;
+            }
+        }
+
+        async function renderPdfInModal(file) {
+            certificateModalBody.classList.add('pdf-mode');
+            certificateModalBody.innerHTML = `
+                <div class="certificate-modal-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <div>Memuat sertifikat...</div>
+                </div>
+            `;
+
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'certificate-pdf-viewer';
+
+                const modalWidth = certificateModalBody.clientWidth || (window.innerWidth - 32);
+                const maxDisplayWidth = Math.min(modalWidth - 24, 900);
+
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const sizes = getPdfRenderSizes(page, maxDisplayWidth);
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d', { alpha: false });
+
+                    canvas.width = Math.floor(sizes.renderViewport.width);
+                    canvas.height = Math.floor(sizes.renderViewport.height);
+
+                    canvas.style.width = sizes.cssWidth + 'px';
+                    canvas.style.height = sizes.cssHeight + 'px';
+
+                    await page.render({
+                        canvasContext: context,
+                        viewport: sizes.renderViewport
+                    }).promise;
+
+                    const pageWrap = document.createElement('div');
+                    pageWrap.className = 'certificate-pdf-page';
+                    pageWrap.appendChild(canvas);
+                    wrapper.appendChild(pageWrap);
+                }
+
+                certificateModalBody.innerHTML = '';
+                certificateModalBody.appendChild(wrapper);
+            } catch (error) {
+                certificateModalBody.innerHTML = `
+                    <div class="certificate-modal-fallback">
+                        <p>PDF tidak bisa ditampilkan di HP ini.</p>
+                        <p style="margin-top:0.75rem;">Silakan coba buka dari browser lain atau unduh file.</p>
+                    </div>
+                `;
+                console.error('Gagal render PDF di modal:', error);
+            }
+        }
+
+        function openCertificateViewer(file) {
+            if (activeCertificateUrl) {
+                URL.revokeObjectURL(activeCertificateUrl);
+                activeCertificateUrl = null;
+            }
+
+            certificateModalTitle.textContent = file.name;
+            certificateModalBody.innerHTML = '';
+            certificateModalBody.classList.remove('pdf-mode');
+
+            certificateModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+                renderPdfInModal(file);
+            } else if (file.type.startsWith('image/')) {
+                activeCertificateUrl = URL.createObjectURL(file);
+
+                const img = document.createElement('img');
+                img.src = activeCertificateUrl;
+                img.alt = file.name;
+                img.className = 'certificate-modal-image';
+                certificateModalBody.appendChild(img);
+            } else {
+                activeCertificateUrl = URL.createObjectURL(file);
+
+                const fallback = document.createElement('div');
+                fallback.className = 'certificate-modal-fallback';
+                fallback.innerHTML = `
+                    <p>File ini tidak bisa dipreview langsung.</p>
+                    <a href="${activeCertificateUrl}" download="${file.name}" class="btn-primary" style="margin-top:1rem;">
+                        Download File
+                    </a>
+                `;
+                certificateModalBody.appendChild(fallback);
+            }
+        }
+
+        function createCertificateCard(file) {
+            const card = document.createElement('div');
+            card.className = 'certificate-card';
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+
+            const preview = document.createElement('div');
+            preview.className = 'certificate-preview';
+
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.alt = file.name;
+                preview.appendChild(img);
+            } else if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+                renderPdfPreview(file, preview);
+            } else {
+                const icon = document.createElement('div');
+                icon.className = 'cert-icon';
+                icon.innerHTML = '<i class="fas fa-file"></i>';
+                preview.appendChild(icon);
+            }
+
+            const body = document.createElement('div');
+            body.className = 'certificate-body';
+            body.innerHTML = `
+                <div class="certificate-name">${file.name}</div>
+                <div class="certificate-meta">${formatFileSize(file.size)}</div>
+            `;
+
+            card.appendChild(preview);
+            card.appendChild(body);
+
+            card.addEventListener('click', function () {
+                openCertificateViewer(file);
+            });
+
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openCertificateViewer(file);
+                }
+            });
+
+            return card;
+        }
+
+        certificateUpload.addEventListener('change', function () {
+            const files = Array.from(this.files || []);
+            if (!files.length) return;
+
+            if (certificateEmpty) {
+                certificateEmpty.remove();
+            }
+
+            files.forEach(file => {
+                certificateGrid.appendChild(createCertificateCard(file));
+            });
+        });
+
+        certificateModalClose.addEventListener('click', closeCertificateViewer);
+
+        certificateModal.addEventListener('click', function (e) {
+            if (e.target === certificateModal) {
+                closeCertificateViewer();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && certificateModal.classList.contains('active')) {
+                closeCertificateViewer();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+name: CI/CD Pipeline - webDinamis
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'webDinamis/**'
+      - '.github/workflows/ci-cd-dinamis.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'webDinamis/**'
+
+jobs:
+  php-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP Environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Run PHP Syntax Check (Lint)
+        run: |
+          echo "Memulai analisis sintaksis file PHP..."
+          find webDinamis/ -name "*.php" -print0 | xargs -0 -n 1 php -l
+
+  build-and-push:
+    needs: php-lint
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./webDinamis
+          file: ./webDinamis/Dockerfile
+          push: true
+          tags: muharifrizky0225pohv/uasdinamis:latest
+
+      - name: Deploy to AWS EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd ~/UAS_2388010017
+            docker compose pull web-dinamis || docker-compose pull web-dinamis
+            docker compose up -d web-dinamis || docker-compose up -d web-dinamis

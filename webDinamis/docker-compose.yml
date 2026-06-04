@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # 1. Database Service (MariaDB)
+  db:
+    image: mariadb:10.11
+    container_name: technime_db_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      # Mount file SQL lokal agar ter-seeding secara otomatis saat pertama kali container dijalankan
+      - ./db_data/uasadmin_2388010017.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - technime_net
+
+  # 2. Web Application Service (PHP Apache)
+  web:
+    build: .
+    container_name: technime_web_container
+    restart: always
+    depends_on:
+      - db
+    environment:
+      # Variabel DNS Internal untuk menghubungkan container web ke db
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "8080:80"
+    volumes:
+      # Mounting folder lokal untuk kemudahan pengembangan (live updates)
+      - .:/var/www/html
+    networks:
+      - technime_net
+
+networks:
+  technime_net:
+    driver: bridge

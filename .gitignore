@@ -1,0 +1,3 @@
+# Mengabaikan file konfigurasi lokal yang sensitif
+.env
+webDinamis/.env
