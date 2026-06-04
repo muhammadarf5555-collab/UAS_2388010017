@@ -37,7 +37,7 @@ if (!isset($path_prefix)) {
             --card: #121226;
             --card-hover: #181832;
             --text: #F3F4F6;
-            --muted: #9CA3AF;
+            --muted: #C4C9D4;
             --border: rgba(108, 99, 255, 0.15);
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
@@ -266,7 +266,7 @@ if (!isset($path_prefix)) {
         }
 
         .table-custom td {
-            color: var(--muted);
+            color: #BFC5D0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             padding: 1rem;
             background: transparent;
@@ -275,6 +275,33 @@ if (!isset($path_prefix)) {
 
         .table-custom tr:last-child td {
             border-bottom: none;
+        }
+
+        /* Global readability fixes for dark theme */
+        .text-muted {
+            color: #B8BEC9 !important;
+        }
+        p.text-muted, small.text-muted, span.text-muted {
+            color: #BFC5D0 !important;
+        }
+        .modal-body .text-muted {
+            color: #CBD0DA !important;
+            font-size: 1rem;
+        }
+        .lead.text-muted {
+            color: #C4C9D4 !important;
+        }
+        .form-label.text-muted {
+            color: #D1D5DB !important;
+        }
+        /* Nav link muted color brighter */
+        .nav-link {
+            color: #B8BEC9 !important;
+        }
+        /* Card sub-text brighter */
+        .card-custom p.text-muted,
+        .card-custom small.text-muted {
+            color: #C0C6D2 !important;
         }
     </style>
 </head>

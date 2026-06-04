@@ -97,15 +97,26 @@ include_once 'includes/header.php';
         <?php else: ?>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php foreach (array_slice((array)$it_articles, 0, 4) as $art): ?>
+                <?php
+                    $artImg = 'uploads/' . ($art['gambar_fitur'] ?? 'default-post.png');
+                    $hasArtImg = !empty($art['gambar_fitur']) && $art['gambar_fitur'] !== 'default-post.png' && file_exists($artImg);
+                ?>
                 <div class="col">
                     <div class="card card-custom">
+                        <?php if ($hasArtImg): ?>
+                            <img src="<?php echo htmlspecialchars($artImg); ?>" class="card-img-top" style="height:180px;object-fit:cover;" alt="<?php echo htmlspecialchars($art['judul']); ?>">
+                        <?php else: ?>
+                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(108,99,255,.04));">
+                                <i class="fa-solid fa-microchip fa-2x" style="color:var(--primary);opacity:.5;"></i>
+                            </div>
+                        <?php endif; ?>
                         <div class="card-body p-4 d-flex flex-column h-100">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="badge-it"><i class="fa-solid fa-code me-1"></i>Informatika</span>
                                 <small class="text-muted" style="font-size:.72rem;"><i class="fa-regular fa-calendar me-1"></i><?php echo date('d M Y', strtotime($art['tanggal'])); ?></small>
                             </div>
                             <h5 class="text-white mb-2"><?php echo htmlspecialchars($art['judul']); ?></h5>
-                            <p class="text-muted small mb-4" style="line-height:1.6;"><?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?></p>
+                            <p class="text-muted small mb-4" style="line-height:1.7;"><?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?></p>
                             <div class="mt-auto">
                                 <button class="btn btn-outline-custom btn-sm w-100 py-2" data-bs-toggle="modal" data-bs-target="#modalIT<?php echo $art['id']; ?>">
                                     Baca Selengkapnya <i class="fa-solid fa-arrow-right-long ms-1"></i>
@@ -118,14 +129,18 @@ include_once 'includes/header.php';
                 <div class="modal fade" id="modalIT<?php echo $art['id']; ?>" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content text-white" style="background:#111124;border:1px solid var(--border);border-radius:20px;">
+                            <?php if ($hasArtImg): ?>
+                            <img src="<?php echo htmlspecialchars($artImg); ?>" style="height:220px;object-fit:cover;border-radius:20px 20px 0 0;width:100%;" alt="<?php echo htmlspecialchars($art['judul']); ?>">
+                            <?php endif; ?>
                             <div class="modal-header border-0 p-4 pb-0">
                                 <span class="badge-it"><i class="fa-solid fa-code me-1"></i>Informatika</span>
                                 <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body p-4 pt-3">
-                                <h3 class="fw-bold brand-font text-white mb-3"><?php echo htmlspecialchars($art['judul']); ?></h3>
+                                <h3 class="fw-bold brand-font text-white mb-1"><?php echo htmlspecialchars($art['judul']); ?></h3>
+                                <p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i><?php echo date('d F Y', strtotime($art['tanggal'])); ?></p>
                                 <hr style="border-color:var(--border);">
-                                <div class="text-muted" style="line-height:1.8;white-space:pre-line;"><?php echo htmlspecialchars($art['isi']); ?></div>
+                                <div style="line-height:1.9;white-space:pre-line;color:#D0D5DE;"><?php echo htmlspecialchars($art['isi']); ?></div>
                             </div>
                             <div class="modal-footer border-0 p-4 pt-0">
                                 <button class="btn btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
@@ -136,6 +151,7 @@ include_once 'includes/header.php';
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+
     </div>
 </section>
 
@@ -159,15 +175,26 @@ include_once 'includes/header.php';
         <?php else: ?>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php foreach (array_slice((array)$anime_articles, 0, 4) as $art): ?>
+                <?php
+                    $artImg = 'uploads/' . ($art['gambar_fitur'] ?? 'default-post.png');
+                    $hasArtImg = !empty($art['gambar_fitur']) && $art['gambar_fitur'] !== 'default-post.png' && file_exists($artImg);
+                ?>
                 <div class="col">
                     <div class="card card-custom">
+                        <?php if ($hasArtImg): ?>
+                            <img src="<?php echo htmlspecialchars($artImg); ?>" class="card-img-top" style="height:180px;object-fit:cover;" alt="<?php echo htmlspecialchars($art['judul']); ?>">
+                        <?php else: ?>
+                            <div class="d-flex align-items-center justify-content-center" style="height:120px;background:linear-gradient(135deg,rgba(255,101,132,.12),rgba(255,101,132,.04));">
+                                <i class="fa-solid fa-ghost fa-2x" style="color:var(--secondary);opacity:.5;"></i>
+                            </div>
+                        <?php endif; ?>
                         <div class="card-body p-4 d-flex flex-column h-100">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="badge-anime"><i class="fa-solid fa-ghost me-1"></i>Anime</span>
                                 <small class="text-muted" style="font-size:.72rem;"><i class="fa-regular fa-calendar me-1"></i><?php echo date('d M Y', strtotime($art['tanggal'])); ?></small>
                             </div>
                             <h5 class="text-white mb-2"><?php echo htmlspecialchars($art['judul']); ?></h5>
-                            <p class="text-muted small mb-4" style="line-height:1.6;"><?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?></p>
+                            <p class="text-muted small mb-4" style="line-height:1.7;"><?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?></p>
                             <div class="mt-auto">
                                 <button class="btn btn-outline-custom btn-sm w-100 py-2" data-bs-toggle="modal" data-bs-target="#modalANIME<?php echo $art['id']; ?>">
                                     Baca Selengkapnya <i class="fa-solid fa-arrow-right-long ms-1"></i>
@@ -180,14 +207,18 @@ include_once 'includes/header.php';
                 <div class="modal fade" id="modalANIME<?php echo $art['id']; ?>" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content text-white" style="background:#111124;border:1px solid var(--border);border-radius:20px;">
+                            <?php if ($hasArtImg): ?>
+                            <img src="<?php echo htmlspecialchars($artImg); ?>" style="height:220px;object-fit:cover;border-radius:20px 20px 0 0;width:100%;" alt="<?php echo htmlspecialchars($art['judul']); ?>">
+                            <?php endif; ?>
                             <div class="modal-header border-0 p-4 pb-0">
                                 <span class="badge-anime"><i class="fa-solid fa-ghost me-1"></i>Anime</span>
                                 <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body p-4 pt-3">
-                                <h3 class="fw-bold brand-font text-white mb-3"><?php echo htmlspecialchars($art['judul']); ?></h3>
+                                <h3 class="fw-bold brand-font text-white mb-1"><?php echo htmlspecialchars($art['judul']); ?></h3>
+                                <p class="text-muted small mb-3"><i class="fa-regular fa-calendar me-1"></i><?php echo date('d F Y', strtotime($art['tanggal'])); ?></p>
                                 <hr style="border-color:var(--border);">
-                                <div class="text-muted" style="line-height:1.8;white-space:pre-line;"><?php echo htmlspecialchars($art['isi']); ?></div>
+                                <div style="line-height:1.9;white-space:pre-line;color:#D0D5DE;"><?php echo htmlspecialchars($art['isi']); ?></div>
                             </div>
                             <div class="modal-footer border-0 p-4 pt-0">
                                 <button class="btn btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
@@ -198,6 +229,7 @@ include_once 'includes/header.php';
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+
     </div>
 </section>
 
@@ -284,22 +316,68 @@ include_once 'includes/header.php';
         <?php if (!empty($certificates)): ?>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php foreach ((array)$certificates as $cert): ?>
+            <?php
+                $cImg  = 'uploads/' . ($cert['gambar_sertifikat'] ?? 'default-cert.png');
+                $hasCImg = !empty($cert['gambar_sertifikat']) && $cert['gambar_sertifikat'] !== 'default-cert.png' && file_exists($cImg);
+            ?>
             <div class="col">
-                <div class="card card-custom">
-                    <?php
-                    $cImg = 'uploads/' . ($cert['gambar_sertifikat'] ?? 'default-cert.png');
-                    $noImg = !file_exists($cImg) || ($cert['gambar_sertifikat'] ?? '') === 'default-cert.png';
-                    ?>
-                    <?php if (!$noImg): ?>
-                        <img src="<?php echo htmlspecialchars($cImg); ?>" class="card-img-top" style="height:140px;object-fit:cover;" alt="<?php echo htmlspecialchars($cert['nama_sertifikat']); ?>">
+                <div class="card card-custom" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalCERT<?php echo $cert['id']; ?>">
+                    <?php if ($hasCImg): ?>
+                        <img src="<?php echo htmlspecialchars($cImg); ?>" class="card-img-top" style="height:160px;object-fit:cover;" alt="<?php echo htmlspecialchars($cert['nama_sertifikat']); ?>">
                     <?php else: ?>
-                        <div class="d-flex align-items-center justify-content-center" style="height:140px;background:rgba(255,193,7,.05);">
-                            <i class="fa-solid fa-award text-warning fa-3x"></i>
+                        <div class="d-flex align-items-center justify-content-center" style="height:160px;background:linear-gradient(135deg,rgba(255,193,7,.12),rgba(255,193,7,.04));">
+                            <i class="fa-solid fa-award fa-3x" style="color:#ffc107;opacity:.6;"></i>
                         </div>
                     <?php endif; ?>
                     <div class="card-body p-4">
-                        <h6 class="text-white mb-1"><?php echo htmlspecialchars($cert['nama_sertifikat']); ?></h6>
-                        <p class="text-muted small mb-0"><i class="fa-solid fa-building me-1"></i><?php echo htmlspecialchars($cert['penerbit']); ?></p>
+                        <h6 class="text-white mb-2 fw-bold"><?php echo htmlspecialchars($cert['nama_sertifikat']); ?></h6>
+                        <p class="mb-2" style="font-size:.8rem;color:#BFC5D0;">
+                            <i class="fa-solid fa-building me-1" style="color:#ffc107;"></i><?php echo htmlspecialchars($cert['penerbit']); ?>
+                        </p>
+                        <span style="font-size:.72rem;background:rgba(255,193,7,.1);color:#ffc107;border:1px solid rgba(255,193,7,.25);border-radius:20px;padding:.2rem .65rem;" class="fw-semibold">
+                            <i class="fa-solid fa-eye me-1"></i>Lihat Detail
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Detail Sertifikat -->
+            <div class="modal fade" id="modalCERT<?php echo $cert['id']; ?>" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content" style="background:#111124;border:1px solid rgba(255,193,7,.2);border-radius:20px;">
+                        <?php if ($hasCImg): ?>
+                        <img src="<?php echo htmlspecialchars($cImg); ?>" style="height:260px;object-fit:contain;object-position:center;border-radius:20px 20px 0 0;width:100%;background:#0a0a14;padding:1rem;" alt="<?php echo htmlspecialchars($cert['nama_sertifikat']); ?>">
+                        <?php else: ?>
+                        <div class="d-flex align-items-center justify-content-center" style="height:160px;background:rgba(255,193,7,.05);border-radius:20px 20px 0 0;">
+                            <i class="fa-solid fa-award fa-4x" style="color:#ffc107;opacity:.5;"></i>
+                        </div>
+                        <?php endif; ?>
+                        <div class="modal-header border-0 p-4 pb-0">
+                            <span style="font-size:.75rem;background:rgba(255,193,7,.12);color:#ffc107;border:1px solid rgba(255,193,7,.3);border-radius:30px;padding:.3rem .75rem;" class="fw-bold">
+                                <i class="fa-solid fa-certificate me-1"></i>Sertifikat
+                            </span>
+                            <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body p-4 pt-3">
+                            <h4 class="fw-bold brand-font text-white mb-3"><?php echo htmlspecialchars($cert['nama_sertifikat']); ?></h4>
+                            <hr style="border-color:rgba(255,193,7,.15);">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="p-3 rounded-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+                                        <p class="text-muted small mb-1 fw-semibold text-uppercase" style="font-size:.68rem;letter-spacing:.05em;">Penerbit</p>
+                                        <p class="text-white mb-0 fw-bold"><i class="fa-solid fa-building text-warning me-2"></i><?php echo htmlspecialchars($cert['penerbit']); ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="p-3 rounded-3" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+                                        <p class="text-muted small mb-1 fw-semibold text-uppercase" style="font-size:.68rem;letter-spacing:.05em;">Status</p>
+                                        <p class="mb-0 fw-bold" style="color:#43E97B;"><i class="fa-solid fa-circle-check me-2"></i>Terverifikasi</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-0 p-4 pt-0">
+                            <button class="btn btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -308,6 +386,7 @@ include_once 'includes/header.php';
         <?php else: ?>
             <div class="text-center text-muted py-4"><i class="fa-solid fa-folder-open fa-2x mb-2 d-block"></i>Belum ada sertifikat.</div>
         <?php endif; ?>
+
     </div>
 </section>
 
