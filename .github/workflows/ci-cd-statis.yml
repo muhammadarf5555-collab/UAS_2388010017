@@ -49,6 +49,18 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            cd ~/UAS_2388010017
+            if [ -d "$HOME/UAS_2388010017" ]; then
+              cd "$HOME/UAS_2388010017"
+            elif [ -d "$HOME/UAS" ]; then
+              cd "$HOME/UAS"
+            else
+              git clone https://github.com/muhammadarf5555-collab/UAS_2388010017.git "$HOME/UAS_2388010017"
+              cd "$HOME/UAS_2388010017"
+            fi
+            git fetch --all
+            git reset --hard origin/main
+            if [ ! -f .env ]; then
+              cp .env.example .env
+            fi
             docker compose pull web-statis || docker-compose pull web-statis
             docker compose up -d web-statis || docker-compose up -d web-statis
