@@ -187,7 +187,8 @@ if (!$is_db_connected) {
 // BUSINESS LOGIC HELPERS: ARTIKEL
 // --------------------------------------------------------
 
-function get_all_articles($kategori = null) {
+function get_all_articles($kategori = null)
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -205,20 +206,22 @@ function get_all_articles($kategori = null) {
     return get_dummy_articles($kategori);
 }
 
-function get_dummy_articles($kategori = null) {
+function get_dummy_articles($kategori = null)
+{
     $articles = $_SESSION['dummy_articles'] ?? [];
-    usort($articles, function($a, $b) {
+    usort($articles, function ($a, $b) {
         return strtotime($b['tanggal']) - strtotime($a['tanggal']);
     });
     if ($kategori) {
-        return array_filter($articles, function($item) use ($kategori) {
+        return array_filter($articles, function ($item) use ($kategori) {
             return strcasecmp($item['kategori'], $kategori) === 0;
         });
     }
     return $articles;
 }
 
-function add_article($judul, $kategori, $isi, $tanggal, $gambar = 'default-post.png') {
+function add_article($judul, $kategori, $isi, $tanggal, $gambar = 'default-post.png')
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -237,7 +240,8 @@ function add_article($judul, $kategori, $isi, $tanggal, $gambar = 'default-post.
     return add_dummy_article($judul, $kategori, $isi, $tanggal, $gambar);
 }
 
-function add_dummy_article($judul, $kategori, $isi, $tanggal, $gambar) {
+function add_dummy_article($judul, $kategori, $isi, $tanggal, $gambar)
+{
     $new_id = time();
     $_SESSION['dummy_articles'][] = [
         'id' => $new_id,
@@ -250,7 +254,8 @@ function add_dummy_article($judul, $kategori, $isi, $tanggal, $gambar) {
     return true;
 }
 
-function delete_article($id) {
+function delete_article($id)
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -263,9 +268,10 @@ function delete_article($id) {
     return delete_dummy_article($id);
 }
 
-function delete_dummy_article($id) {
-    $_SESSION['dummy_articles'] = array_filter($_SESSION['dummy_articles'] ?? [], function($item) use ($id) {
-        return (int)$item['id'] !== (int)$id;
+function delete_dummy_article($id)
+{
+    $_SESSION['dummy_articles'] = array_filter($_SESSION['dummy_articles'] ?? [], function ($item) use ($id) {
+        return (int) $item['id'] !== (int) $id;
     });
     return true;
 }
@@ -274,7 +280,8 @@ function delete_dummy_article($id) {
 // BUSINESS LOGIC HELPERS: PROYEK IT
 // --------------------------------------------------------
 
-function get_all_projects() {
+function get_all_projects()
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -286,7 +293,8 @@ function get_all_projects() {
     return $_SESSION['dummy_projects'] ?? [];
 }
 
-function add_project($judul, $deskripsi, $tech, $gambar = 'default-project.png') {
+function add_project($judul, $deskripsi, $tech, $gambar = 'default-project.png')
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -304,7 +312,8 @@ function add_project($judul, $deskripsi, $tech, $gambar = 'default-project.png')
     return add_dummy_project($judul, $deskripsi, $tech, $gambar);
 }
 
-function add_dummy_project($judul, $deskripsi, $tech, $gambar) {
+function add_dummy_project($judul, $deskripsi, $tech, $gambar)
+{
     $_SESSION['dummy_projects'][] = [
         'id' => time(),
         'judul_proyek' => $judul,
@@ -315,7 +324,8 @@ function add_dummy_project($judul, $deskripsi, $tech, $gambar) {
     return true;
 }
 
-function delete_project($id) {
+function delete_project($id)
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -328,9 +338,10 @@ function delete_project($id) {
     return delete_dummy_project($id);
 }
 
-function delete_dummy_project($id) {
-    $_SESSION['dummy_projects'] = array_filter($_SESSION['dummy_projects'] ?? [], function($item) use ($id) {
-        return (int)$item['id'] !== (int)$id;
+function delete_dummy_project($id)
+{
+    $_SESSION['dummy_projects'] = array_filter($_SESSION['dummy_projects'] ?? [], function ($item) use ($id) {
+        return (int) $item['id'] !== (int) $id;
     });
     return true;
 }
@@ -339,7 +350,8 @@ function delete_dummy_project($id) {
 // BUSINESS LOGIC HELPERS: SERTIFIKAT
 // --------------------------------------------------------
 
-function get_all_certificates() {
+function get_all_certificates()
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -351,7 +363,8 @@ function get_all_certificates() {
     return $_SESSION['dummy_certs'] ?? [];
 }
 
-function add_certificate($nama, $penerbit, $gambar = 'default-cert.png') {
+function add_certificate($nama, $penerbit, $gambar = 'default-cert.png')
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -368,7 +381,8 @@ function add_certificate($nama, $penerbit, $gambar = 'default-cert.png') {
     return add_dummy_certificate($nama, $penerbit, $gambar);
 }
 
-function add_dummy_certificate($nama, $penerbit, $gambar) {
+function add_dummy_certificate($nama, $penerbit, $gambar)
+{
     $_SESSION['dummy_certs'][] = [
         'id' => time(),
         'nama_sertifikat' => $nama,
@@ -378,7 +392,8 @@ function add_dummy_certificate($nama, $penerbit, $gambar) {
     return true;
 }
 
-function delete_certificate($id) {
+function delete_certificate($id)
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -391,9 +406,10 @@ function delete_certificate($id) {
     return delete_dummy_certificate($id);
 }
 
-function delete_dummy_certificate($id) {
-    $_SESSION['dummy_certs'] = array_filter($_SESSION['dummy_certs'] ?? [], function($item) use ($id) {
-        return (int)$item['id'] !== (int)$id;
+function delete_dummy_certificate($id)
+{
+    $_SESSION['dummy_certs'] = array_filter($_SESSION['dummy_certs'] ?? [], function ($item) use ($id) {
+        return (int) $item['id'] !== (int) $id;
     });
     return true;
 }
@@ -402,7 +418,8 @@ function delete_dummy_certificate($id) {
 // BUSINESS LOGIC HELPERS: PERINGKAT ANIME
 // --------------------------------------------------------
 
-function get_all_rankings() {
+function get_all_rankings()
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -415,15 +432,17 @@ function get_all_rankings() {
     return get_dummy_rankings();
 }
 
-function get_dummy_rankings() {
+function get_dummy_rankings()
+{
     $ranks = $_SESSION['dummy_rankings'] ?? [];
-    usort($ranks, function($a, $b) {
+    usort($ranks, function ($a, $b) {
         return ($b['skor_rating'] > $a['skor_rating']) ? 1 : -1;
     });
     return $ranks;
 }
 
-function add_ranking($judul, $genre, $skor, $rank, $sinopsis, $gambar = 'default-anime.png') {
+function add_ranking($judul, $genre, $skor, $rank, $sinopsis, $gambar = 'default-anime.png')
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -443,20 +462,22 @@ function add_ranking($judul, $genre, $skor, $rank, $sinopsis, $gambar = 'default
     return add_dummy_ranking($judul, $genre, $skor, $rank, $sinopsis, $gambar);
 }
 
-function add_dummy_ranking($judul, $genre, $skor, $rank, $sinopsis, $gambar) {
+function add_dummy_ranking($judul, $genre, $skor, $rank, $sinopsis, $gambar)
+{
     $_SESSION['dummy_rankings'][] = [
         'id' => time(),
         'judul_anime' => $judul,
         'genre' => $genre,
-        'skor_rating' => (float)$skor,
-        'posisi_rank' => (int)$rank,
+        'skor_rating' => (float) $skor,
+        'posisi_rank' => (int) $rank,
         'sinopsis' => $sinopsis,
         'gambar_anime' => $gambar
     ];
     return true;
 }
 
-function delete_ranking($id) {
+function delete_ranking($id)
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -469,168 +490,11 @@ function delete_ranking($id) {
     return delete_dummy_ranking($id);
 }
 
-function delete_dummy_ranking($id) {
-    $_SESSION['dummy_rankings'] = array_filter($_SESSION['dummy_rankings'] ?? [], function($item) use ($id) {
-        return (int)$item['id'] !== (int)$id;
+function delete_dummy_ranking($id)
+{
+    $_SESSION['dummy_rankings'] = array_filter($_SESSION['dummy_rankings'] ?? [], function ($item) use ($id) {
+        return (int) $item['id'] !== (int) $id;
     });
-    return true;
-}
-
-// --------------------------------------------------------
-// BUSINESS LOGIC HELPERS: UPDATE / EDIT
-// --------------------------------------------------------
-
-function get_article_by_id($id) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            $stmt = $conn->prepare("SELECT * FROM artikel WHERE id = :id");
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch();
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_articles'] ?? [] as $a) {
-        if ((int)$a['id'] === (int)$id) return $a;
-    }
-    return null;
-}
-
-function update_article($id, $judul, $kategori, $isi, $gambar = null) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            if ($gambar) {
-                $stmt = $conn->prepare("UPDATE artikel SET judul=:judul, kategori=:kategori, isi=:isi, gambar_fitur=:gambar WHERE id=:id");
-                return $stmt->execute(['judul'=>$judul,'kategori'=>$kategori,'isi'=>$isi,'gambar'=>$gambar,'id'=>$id]);
-            } else {
-                $stmt = $conn->prepare("UPDATE artikel SET judul=:judul, kategori=:kategori, isi=:isi WHERE id=:id");
-                return $stmt->execute(['judul'=>$judul,'kategori'=>$kategori,'isi'=>$isi,'id'=>$id]);
-            }
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_articles'] ?? [] as &$a) {
-        if ((int)$a['id'] === (int)$id) {
-            $a['judul'] = $judul; $a['kategori'] = $kategori; $a['isi'] = $isi;
-            if ($gambar) $a['gambar_fitur'] = $gambar;
-            return true;
-        }
-    }
-    return true;
-}
-
-function get_project_by_id($id) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            $stmt = $conn->prepare("SELECT * FROM proyek_it WHERE id = :id");
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch();
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_projects'] ?? [] as $p) {
-        if ((int)$p['id'] === (int)$id) return $p;
-    }
-    return null;
-}
-
-function update_project($id, $judul, $deskripsi, $tech, $gambar = null) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            if ($gambar) {
-                $stmt = $conn->prepare("UPDATE proyek_it SET judul_proyek=:judul, deskripsi=:deskripsi, tech_stack=:tech, gambar_proyek=:gambar WHERE id=:id");
-                return $stmt->execute(['judul'=>$judul,'deskripsi'=>$deskripsi,'tech'=>$tech,'gambar'=>$gambar,'id'=>$id]);
-            } else {
-                $stmt = $conn->prepare("UPDATE proyek_it SET judul_proyek=:judul, deskripsi=:deskripsi, tech_stack=:tech WHERE id=:id");
-                return $stmt->execute(['judul'=>$judul,'deskripsi'=>$deskripsi,'tech'=>$tech,'id'=>$id]);
-            }
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_projects'] ?? [] as &$p) {
-        if ((int)$p['id'] === (int)$id) {
-            $p['judul_proyek'] = $judul; $p['deskripsi'] = $deskripsi; $p['tech_stack'] = $tech;
-            if ($gambar) $p['gambar_proyek'] = $gambar;
-            return true;
-        }
-    }
-    return true;
-}
-
-function get_certificate_by_id($id) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            $stmt = $conn->prepare("SELECT * FROM sertifikat WHERE id = :id");
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch();
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_certs'] ?? [] as $c) {
-        if ((int)$c['id'] === (int)$id) return $c;
-    }
-    return null;
-}
-
-function update_certificate($id, $nama, $penerbit, $gambar = null) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            if ($gambar) {
-                $stmt = $conn->prepare("UPDATE sertifikat SET nama_sertifikat=:nama, penerbit=:penerbit, gambar_sertifikat=:gambar WHERE id=:id");
-                return $stmt->execute(['nama'=>$nama,'penerbit'=>$penerbit,'gambar'=>$gambar,'id'=>$id]);
-            } else {
-                $stmt = $conn->prepare("UPDATE sertifikat SET nama_sertifikat=:nama, penerbit=:penerbit WHERE id=:id");
-                return $stmt->execute(['nama'=>$nama,'penerbit'=>$penerbit,'id'=>$id]);
-            }
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_certs'] ?? [] as &$c) {
-        if ((int)$c['id'] === (int)$id) {
-            $c['nama_sertifikat'] = $nama; $c['penerbit'] = $penerbit;
-            if ($gambar) $c['gambar_sertifikat'] = $gambar;
-            return true;
-        }
-    }
-    return true;
-}
-
-function get_ranking_by_id($id) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            $stmt = $conn->prepare("SELECT * FROM peringkat_anime WHERE id = :id");
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch();
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_rankings'] ?? [] as $r) {
-        if ((int)$r['id'] === (int)$id) return $r;
-    }
-    return null;
-}
-
-function update_ranking($id, $judul, $genre, $skor, $rank, $sinopsis, $gambar = null) {
-    global $conn, $is_db_connected;
-    if ($is_db_connected) {
-        try {
-            if ($gambar) {
-                $stmt = $conn->prepare("UPDATE peringkat_anime SET judul_anime=:judul, genre=:genre, skor_rating=:skor, posisi_rank=:rank, sinopsis=:sinopsis, gambar_anime=:gambar WHERE id=:id");
-                return $stmt->execute(['judul'=>$judul,'genre'=>$genre,'skor'=>$skor,'rank'=>$rank,'sinopsis'=>$sinopsis,'gambar'=>$gambar,'id'=>$id]);
-            } else {
-                $stmt = $conn->prepare("UPDATE peringkat_anime SET judul_anime=:judul, genre=:genre, skor_rating=:skor, posisi_rank=:rank, sinopsis=:sinopsis WHERE id=:id");
-                return $stmt->execute(['judul'=>$judul,'genre'=>$genre,'skor'=>$skor,'rank'=>$rank,'sinopsis'=>$sinopsis,'id'=>$id]);
-            }
-        } catch (PDOException $e) {}
-    }
-    foreach ($_SESSION['dummy_rankings'] ?? [] as &$r) {
-        if ((int)$r['id'] === (int)$id) {
-            $r['judul_anime'] = $judul; $r['genre'] = $genre;
-            $r['skor_rating'] = (float)$skor; $r['posisi_rank'] = (int)$rank;
-            $r['sinopsis'] = $sinopsis;
-            if ($gambar) $r['gambar_anime'] = $gambar;
-            return true;
-        }
-    }
     return true;
 }
 
@@ -638,14 +502,17 @@ function update_ranking($id, $judul, $genre, $skor, $rank, $sinopsis, $gambar = 
 // BUSINESS LOGIC HELPERS: ADMIN AUTH & GENERAL
 // --------------------------------------------------------
 
-function get_admin_info() {
+function get_admin_info()
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
             $stmt = $conn->query("SELECT * FROM admin LIMIT 1");
             $admin = $stmt->fetch();
-            if ($admin) return $admin;
-        } catch (PDOException $e) {}
+            if ($admin)
+                return $admin;
+        } catch (PDOException $e) {
+        }
     }
     return $_SESSION['dummy_admin'] ?? [
         'username' => 'admin',
@@ -656,7 +523,8 @@ function get_admin_info() {
     ];
 }
 
-function authenticate_admin($username, $password) {
+function authenticate_admin($username, $password)
+{
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
@@ -669,9 +537,10 @@ function authenticate_admin($username, $password) {
                 $_SESSION['admin_nama'] = $admin['nama_lengkap'];
                 return true;
             }
-        } catch (PDOException $e) {}
+        } catch (PDOException $e) {
+        }
     }
-    
+
     // Fallback static credentials
     if ($username === 'admin' && $password === 'admin123') {
         $_SESSION['admin_logged_in'] = true;
@@ -682,14 +551,16 @@ function authenticate_admin($username, $password) {
     return false;
 }
 
-function check_admin_login() {
+function check_admin_login()
+{
     if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
         header("Location: login.php");
         exit;
     }
 }
 
-function get_synopsis($text, $limit = 120) {
+function get_synopsis($text, $limit = 120)
+{
     if (strlen($text) > $limit) {
         $substring = substr($text, 0, $limit);
         $last_space = strrpos($substring, ' ');
