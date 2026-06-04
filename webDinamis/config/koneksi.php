@@ -187,8 +187,7 @@ if (!$is_db_connected) {
 // BUSINESS LOGIC HELPERS: ARTIKEL
 // --------------------------------------------------------
 
-function get_all_articles($kategori = null)
-{
+function get_all_articles($kategori = null) {
     global $conn, $is_db_connected;
     if ($is_db_connected) {
         try {
