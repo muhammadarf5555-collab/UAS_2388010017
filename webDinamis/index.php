@@ -100,8 +100,8 @@ include_once 'includes/header.php';
                     <div class="text-start">
                         <p class="text-white fw-bold small mb-1"><i
                                 class="fa-solid fa-circle-nodes text-primary me-2"></i>AI &amp; Pop Culture Hub</p>
-                        <p class="text-muted small mb-0">Konten edukatif IT dikombinasikan dengan kesukaan hobi menonton
-                            film
+                        <p class="text-muted small mb-0">MUHAMMAD ARIF RIZKY SANG JUARA COC Konten edukatif IT
+                            dikombinasikan dengan kesukaan hobi menonton film
                         </p>
                     </div>
                 </div>
