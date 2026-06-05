@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_public_cert'])
     $nama = trim($_POST['nama_sertifikat'] ?? '');
     $penerbit = trim($_POST['penerbit'] ?? '');
     $gambar = 'default-cert.png';
-    
+
     if ($nama === '' || $penerbit === '') {
         $public_msg = '<div class="alert alert-danger mx-3 mt-3">Nama dan Penerbit wajib diisi!</div>';
     } else {
@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_public_cert'])
         if (isset($_FILES['gambar_sertifikat']) && $_FILES['gambar_sertifikat']['error'] === UPLOAD_ERR_OK) {
             $file = $_FILES['gambar_sertifikat'];
             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            if (in_array($file['type'], $allowedTypes) && $file['size'] <= 5*1024*1024) {
+            if (in_array($file['type'], $allowedTypes) && $file['size'] <= 5 * 1024 * 1024) {
                 $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-                $uniqueName = time() . '_' . mt_rand(1000,9999) . '.' . strtolower($ext);
+                $uniqueName = time() . '_' . mt_rand(1000, 9999) . '.' . strtolower($ext);
                 if (move_uploaded_file($file['tmp_name'], $uploadDir . $uniqueName)) {
                     $gambar = $uniqueName;
                 }
@@ -100,8 +100,9 @@ include_once 'includes/header.php';
                     <div class="text-start">
                         <p class="text-white fw-bold small mb-1"><i
                                 class="fa-solid fa-circle-nodes text-primary me-2"></i>AI &amp; Pop Culture Hub</p>
-                        <p class="text-muted small mb-0">Konten edukatif IT dikombinasikan dengan review pop kultur
-                            jepang.</p>
+                        <p class="text-muted small mb-0">Konten edukatif IT dikombinasikan dengan kesukaan hobi menonton
+                            film
+                        </p>
                     </div>
                 </div>
             </div>
@@ -169,7 +170,8 @@ include_once 'includes/header.php';
                                 </div>
                                 <h5 class="text-white mb-2"><?php echo htmlspecialchars($art['judul']); ?></h5>
                                 <p class="text-muted small mb-4" style="line-height:1.7;">
-                                    <?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?></p>
+                                    <?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?>
+                                </p>
                                 <div class="mt-auto">
                                     <button class="btn btn-outline-custom btn-sm w-100 py-2" data-bs-toggle="modal"
                                         data-bs-target="#modalIT<?php echo $art['id']; ?>">
@@ -196,13 +198,15 @@ include_once 'includes/header.php';
                                 </div>
                                 <div class="modal-body p-4 pt-3">
                                     <h3 class="fw-bold brand-font text-white mb-1">
-                                        <?php echo htmlspecialchars($art['judul']); ?></h3>
+                                        <?php echo htmlspecialchars($art['judul']); ?>
+                                    </h3>
                                     <p class="text-muted small mb-3"><i
                                             class="fa-regular fa-calendar me-1"></i><?php echo date('d F Y', strtotime($art['tanggal'])); ?>
                                     </p>
                                     <hr style="border-color:var(--border);">
                                     <div style="line-height:1.9;white-space:pre-line;color:#D0D5DE;">
-                                        <?php echo htmlspecialchars($art['isi']); ?></div>
+                                        <?php echo htmlspecialchars($art['isi']); ?>
+                                    </div>
                                 </div>
                                 <div class="modal-footer border-0 p-4 pt-0">
                                     <button class="btn btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
@@ -263,7 +267,8 @@ include_once 'includes/header.php';
                                 </div>
                                 <h5 class="text-white mb-2"><?php echo htmlspecialchars($art['judul']); ?></h5>
                                 <p class="text-muted small mb-4" style="line-height:1.7;">
-                                    <?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?></p>
+                                    <?php echo htmlspecialchars(get_synopsis($art['isi'], 150)); ?>
+                                </p>
                                 <div class="mt-auto">
                                     <button class="btn btn-outline-custom btn-sm w-100 py-2" data-bs-toggle="modal"
                                         data-bs-target="#modalANIME<?php echo $art['id']; ?>">
@@ -290,13 +295,15 @@ include_once 'includes/header.php';
                                 </div>
                                 <div class="modal-body p-4 pt-3">
                                     <h3 class="fw-bold brand-font text-white mb-1">
-                                        <?php echo htmlspecialchars($art['judul']); ?></h3>
+                                        <?php echo htmlspecialchars($art['judul']); ?>
+                                    </h3>
                                     <p class="text-muted small mb-3"><i
                                             class="fa-regular fa-calendar me-1"></i><?php echo date('d F Y', strtotime($art['tanggal'])); ?>
                                     </p>
                                     <hr style="border-color:var(--border);">
                                     <div style="line-height:1.9;white-space:pre-line;color:#D0D5DE;">
-                                        <?php echo htmlspecialchars($art['isi']); ?></div>
+                                        <?php echo htmlspecialchars($art['isi']); ?>
+                                    </div>
                                 </div>
                                 <div class="modal-footer border-0 p-4 pt-0">
                                     <button class="btn btn-outline-custom" data-bs-dismiss="modal">Tutup</button>
@@ -348,7 +355,8 @@ include_once 'includes/header.php';
                 </div>
                 <div class="col-md-10">
                     <h4 class="text-white mb-1 brand-font">
-                        <?php echo htmlspecialchars($admin_info['nama_lengkap'] ?? 'Muhammad Arif Rizky'); ?></h4>
+                        <?php echo htmlspecialchars($admin_info['nama_lengkap'] ?? 'Muhammad Arif Rizky'); ?>
+                    </h4>
                     <p class="text-muted mb-1 small">
                         <span class="badge-it me-2"><i class="fa-solid fa-id-badge me-1"></i>NIM:
                             <?php echo htmlspecialchars($admin_info['nim'] ?? '2388010017'); ?></span>
@@ -386,7 +394,8 @@ include_once 'includes/header.php';
                             <div class="card-body p-4">
                                 <h5 class="text-white mb-2"><?php echo htmlspecialchars($proj['judul_proyek']); ?></h5>
                                 <p class="text-muted small mb-3" style="line-height:1.6;">
-                                    <?php echo htmlspecialchars(get_synopsis($proj['deskripsi'], 100)); ?></p>
+                                    <?php echo htmlspecialchars(get_synopsis($proj['deskripsi'], 100)); ?>
+                                </p>
                                 <div class="d-flex flex-wrap gap-1">
                                     <?php foreach (explode(',', $proj['tech_stack']) as $tech): ?>
                                         <span
@@ -467,7 +476,8 @@ include_once 'includes/header.php';
                                 </div>
                                 <div class="modal-body p-4 pt-3">
                                     <h4 class="fw-bold brand-font text-white mb-3">
-                                        <?php echo htmlspecialchars($cert['nama_sertifikat']); ?></h4>
+                                        <?php echo htmlspecialchars($cert['nama_sertifikat']); ?>
+                                    </h4>
                                     <hr style="border-color:rgba(255,193,7,.15);">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
@@ -506,10 +516,12 @@ include_once 'includes/header.php';
 
         <!-- Form Kirim Sertifikat (Public) -->
         <div class="mt-5">
-            <h5 class="text-white mb-3 brand-font"><i class="fa-solid fa-upload text-primary me-2"></i>Kirim Sertifikat Baru</h5>
+            <h5 class="text-white mb-3 brand-font"><i class="fa-solid fa-upload text-primary me-2"></i>Kirim Sertifikat
+                Baru</h5>
             <div class="card card-custom p-4">
                 <?php echo $public_msg ?? ''; ?>
-                <form action="<?php echo $path_prefix; ?>index.php#portofolio" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo $path_prefix; ?>index.php#portofolio" method="POST"
+                    enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label text-muted small">Nama Sertifikat</label>
@@ -521,7 +533,8 @@ include_once 'includes/header.php';
                         </div>
                         <div class="col-md-12">
                             <label class="form-label text-muted small">Upload Gambar Sertifikat</label>
-                            <input type="file" name="gambar_sertifikat" class="form-control form-control-custom" accept="image/*">
+                            <input type="file" name="gambar_sertifikat" class="form-control form-control-custom"
+                                accept="image/*">
                         </div>
                         <div class="col-md-12 text-end mt-4">
                             <button type="submit" name="submit_public_cert" class="btn btn-gradient px-4 py-2">
