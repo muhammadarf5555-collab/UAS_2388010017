@@ -65,7 +65,7 @@ include_once 'includes/header.php';
                 <h1 class="display-4 fw-bold text-white mb-3 lh-sm" style="letter-spacing: -1.5px;">
                     Portal <span
                         style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Informatika</span>
-                    &amp; <span class="text-secondary">Anime</span> Terkini
+                    &amp; <span class="text-secondary">Anime</span> Terkini MUHAMMAD ARIF RIZKY_2388010017
                 </h1>
                 <p class="lead text-muted mb-2" style="font-size: 1.1rem; line-height: 1.8;">
                     <strong class="text-white">TechNime Blog</strong> — wadah berbagi informasi teknologi kecerdasan
